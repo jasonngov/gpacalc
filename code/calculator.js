@@ -79,12 +79,6 @@ function calculateGPA (){
        if (credit != ""){listcredits.push(credit);}
 
     }
-    console.log(listgrades);
-    console.log(listcredits);
-    /* code to check if valid
-    if (listcredits.length == 0 || listgrades.length == 0){alert("invalid"); return;}
-    if (listcredits.length != listgrades.length){alert("invaid"); return;}
-    */
     
     //assign each grade in listgrade (array of grades) to a weighted point value and store in listgpa
     listgrades.forEach(function(a) {
@@ -109,7 +103,6 @@ function calculateGPA (){
     listcredits.forEach(function(a){
         sum += parseInt(a, 10);
     })
-    console.log("Sum " + sum);
 
     //multiply weighted grade and credit
     var sumGradeCredit = 0;
@@ -128,11 +121,10 @@ function calculateGPA (){
     } else {
         document.getElementById("output").innerHTML = weightedgpa;
     }
-
+    
     //reset array fields when gpa calculated
     listgrades = [];
     listcredits = [];
     listgpa = [];
     multiplyList = [];
-
 }
