@@ -9,18 +9,26 @@ document.getElementById("joinbtn").addEventListener("click", e => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("confirmedPassword").value;
 
+
     auth
       .createUserWithEmailAndPassword(email, password)
       .then(function (user) {
+        /*
+        * Creates instance of new user in collection 'Users'
+        * Includes information about user first and last name, email
+        */
         db.collection("users")
-          .doc(auth.currentUser.uid)
+          .doc(12345)
           .set({
             first: first,
             last: last,
             email: email,
           })
+          .then(function (docRef) {
+            console.log("Document written with ID: ", 12345);
+          })
           .catch(function (error) {
-            alert("Error adding document: ", error);
+            console.error("Error adding document: ", error);
           });
       })
       .catch(error => {
